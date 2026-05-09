@@ -1,10 +1,18 @@
 import chromadb
 
-from sentence_transformers import SentenceTransformer
+from sentence_transformers import (
+    SentenceTransformer,
+    CrossEncoder
+)
+
 from data.manuals import documents
 
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
+
+cross_encoder = CrossEncoder(
+    "cross-encoder/ms-marco-MiniLM-L-6-v2"
+)
 
 client = chromadb.Client()
 
@@ -59,7 +67,26 @@ def retrieve_documents(query_embedding):
     for i, doc in enumerate(results["documents"][0], start=1):
         print(f"{i}. {doc}")
 
-    return results
+    return results["documents"][0]
+
+
+def rerank_documents(query, retrieved_docs):
+    pairs = [[query, doc] for doc in retrieved_docs]
+
+    scores = cross_encoder.predict(pairs)
+
+    ranked_results = sorted(
+        zip(retrieved_docs, scores),
+        key=lambda x: x[1],
+        reverse=True
+    )
+
+    print("\nTOP 3 DOCUMENTOS APÓS RE-RANKING:\n")
+
+    for i, (doc, score) in enumerate(ranked_results[:3], start=1):
+        print(f"{i}. Score: {score:.4f}")
+        print(doc)
+        print()
 
 
 if __name__ == "__main__":
@@ -69,4 +96,6 @@ if __name__ == "__main__":
 
     hyde_embedding = hyde_transform(query)
 
-    retrieve_documents(hyde_embedding)
+    retrieved_docs = retrieve_documents(hyde_embedding)
+
+    rerank_documents(query, retrieved_docs)
