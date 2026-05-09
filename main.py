@@ -99,3 +99,5 @@ if __name__ == "__main__":
     retrieved_docs = retrieve_documents(hyde_embedding)
 
     rerank_documents(query, retrieved_docs)
+
+    print("\nPipeline RAG executado com sucesso.")
