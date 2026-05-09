@@ -48,9 +48,25 @@ def hyde_transform(query):
     return embedding
 
 
+def retrieve_documents(query_embedding):
+    results = collection.query(
+        query_embeddings=[query_embedding],
+        n_results=10
+    )
+
+    print("\nTOP 10 DOCUMENTOS RECUPERADOS:\n")
+
+    for i, doc in enumerate(results["documents"][0], start=1):
+        print(f"{i}. {doc}")
+
+    return results
+
+
 if __name__ == "__main__":
     index_documents()
 
     query = "dor de cabeça latejante e luz incomodando"
 
     hyde_embedding = hyde_transform(query)
+
+    retrieve_documents(hyde_embedding)
