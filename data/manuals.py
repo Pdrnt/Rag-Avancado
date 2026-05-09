@@ -1,0 +1,22 @@
+documents = [
+    "Paciente com cefaleia pulsátil associada à fotofobia e náusea.",
+    "Quadro clínico compatível com hipertensão arterial sistêmica.",
+    "Presença de dispneia progressiva e fadiga aos esforços.",
+    "Paciente apresenta dor torácica irradiando para membro superior esquerdo.",
+    "Episódios recorrentes de hiperglicemia em jejum.",
+    "Sinais de inflamação nas vias aéreas superiores.",
+    "Relato de tontura associada à hipotensão postural.",
+    "Sintomas sugestivos de gastrite erosiva crônica.",
+    "Paciente com taquicardia supraventricular persistente.",
+    "Evidências clínicas de insuficiência renal aguda.",
+    "Quadro de febre alta associado à leucocitose.",
+    "Paciente apresenta edema periférico bilateral.",
+    "Sinais compatíveis com neuropatia diabética periférica.",
+    "Presença de fotofobia intensa e rigidez cervical.",
+    "Paciente relata episódios de síncope vasovagal.",
+    "Dor abdominal em região epigástrica pós-prandial.",
+    "Saturação de oxigênio abaixo dos níveis recomendados.",
+    "Paciente com quadro sugestivo de broncopneumonia bacteriana.",
+    "Relato de cefaleia tensional recorrente.",
+    "Sintomas compatíveis com refluxo gastroesofágico."
+]
