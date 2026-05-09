@@ -31,5 +31,26 @@ def index_documents():
     print("Documentos indexados com sucesso no HNSW.")
 
 
+def hyde_transform(query):
+    hypothetical_document = f"""
+    Paciente apresenta sintomas clínicos compatíveis com:
+    {query}
+
+    Possível presença de quadro neurológico associado à cefaleia pulsátil,
+    fotofobia, náusea e sensibilidade à luz.
+    """
+
+    print("\nDocumento Hipotético Gerado (HyDE):\n")
+    print(hypothetical_document)
+
+    embedding = model.encode(hypothetical_document).tolist()
+
+    return embedding
+
+
 if __name__ == "__main__":
     index_documents()
+
+    query = "dor de cabeça latejante e luz incomodando"
+
+    hyde_embedding = hyde_transform(query)
